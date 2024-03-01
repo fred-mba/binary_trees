@@ -68,5 +68,7 @@ heap_t *array_to_heap(int *array, size_t size);
 int heap_extract(heap_t **root);
 int *heap_to_sorted_array(heap_t *heap, size_t *size);
 void traversal_level(const binary_tree_t *tree, void (*func)(int), int level);
+int full_binary_tree(const binary_tree_t *tree, size_t level);
+int is_complete(const binary_tree_t *tree, int level, int size);
 
 #endif
