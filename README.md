@@ -1,7 +1,7 @@
 ## C - Binary trees
 `new_node` is the pointer to the newly created node. It will later be used to update the left child of the parent node and link the new node to the tree structure.
 
-### pre-oder traversal:
+### pre-order traversal:
     - Also called depth-first-value method
     - Implemented on a stack
     - The sequence is: Root, Left, Right.
@@ -21,7 +21,7 @@
                 (D)     (E)     (F)     (G)
     Sequence: A, B, C, D, E, F, G
 
-### In-oder Traversal:
+### In-order Traversal:
     - Visit the left subtree, then the root and later the right sub-tree
     - The sequence is: Left, Root, Right
 
