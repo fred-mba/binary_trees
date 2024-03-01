@@ -1,41 +1,49 @@
 #include "binary_trees.h"
-
 /**
- * binary_tree_is_bst - Checks if a binary tree is a valid Binary Search Tree
- *
- * @tree: Pointer to the root of the node to check
- *
- * Return: 1 if valid BST, 0 if not or if root is NULL
- */
-
-int binary_tree_is_bst(const binary_tree_t *tree)
+ * tree_is_bst - Helper function to check if a subtree is a valid BST
+ * @node: pointer to root node
+ * @prev_value: smalest value than any node value in the tree
+ * Return: 1 for an empty subtree, 0 if value and subtree exists
+*/
+int tree_is_bst(const binary_tree_t *node, int *prev_value)
 {
-	const binary_tree_t *prev = NULL;
+	if (node == NULL)
+		return (1); /*BST is valid if a single node exists*/
 
-	return (is_bst_util(tree, &prev));
+	/*Check the left subtree*/
+	if (!tree_is_bst(node->left, prev_value))
+	{
+		return (0);
+	}
+
+	/*Check the current node's value*/
+	if (*prev_value >= node->n)
+	{
+		return (0);
+	}
+
+	/*Update the previous value to the current node's value*/
+	*prev_value = node->n;
+
+	/*Check the right subtree*/
+	return (tree_is_bst(node->right, prev_value));
 }
 
 /**
- * is_bst_util - Helper function to check if binary tree is a valid BST
+ * binary_tree_is_bst -  checks if a binary tree is a valid
+ * @tree: pointer to the root node of the tree to check
  *
- * @tree: Pointer to the root node of the tree
- * @prev: Pointer to the previously visited node
- *
- * Return: 1 if tree is BST, otherwise 0
- */
-
-int is_bst_util(const binary_tree_t *tree, const binary_tree_t **prev)
+ * Return: return 1 if tree is a valid BST, and 0 otherwise
+ *		If tree is NULL, return 0
+*/
+int binary_tree_is_bst(const binary_tree_t *tree)
 {
-	if (!tree)
-		return (1);
+	int prev_value;
 
-	if (!is_bst_util(tree->left, prev))
+	if (tree == NULL)
 		return (0);
 
-	if (*prev != NULL && tree->n <= (*prev)->n)
-		return (0);
+	prev_value = -1; /*Initializing with smallest value*/
 
-	*prev = tree;
-
-	return (is_bst_util(tree->right, prev));
+	return (tree_is_bst(tree, &prev_value));
 }
