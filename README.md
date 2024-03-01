@@ -2,13 +2,24 @@
 `new_node` is the pointer to the newly created node. It will later be used to update the left child of the parent node and link the new node to the tree structure.
 
 ### pre-oder traversal:
-    - Visit the current node after its children.
+    - Also called depth-first-value method
+    - Implemented on a stack
     - The sequence is: Root, Left, Right.
     - Useful when you want to create a deep copy of the tree or create a prefix expression for expression trees
                         .-------(A)-------.
                     .--(B)--.         .--(C)--.
                     (D)     (E)     (F)     (G)
-    pre-order: A, B, D, E, C, F, G
+    pre-order sequence: A, B, D, E, C, F, G
+
+### Level-order traversal
+    - Also called breadth-first-values method
+    - Traverses through the tree level
+    - Can also be implemented using queues
+
+                     .-------(A)-------.
+                .--(B)--.         .--(C)--.
+                (D)     (E)     (F)     (G)
+    Sequence: A, B, C, D, E, F, G
 
 ### In-oder Traversal:
     - Visit the left subtree, then the root and later the right sub-tree
@@ -17,7 +28,7 @@
                         .-------(A)-------.
                     .--(B)--.         .--(C)--.
                     (D)     (E)     (F)     (G)
-    In-order: D, B, E, A, F, C, G
+    In-order sequence: D, B, E, A, F, C, G
 
 ### Post-order Traversal:
     - Visit the current node after its children.
@@ -28,7 +39,7 @@
                 .--(B)--.         .--(C)--.
                 (D)     (E)     (F)     (G)
 
-    post-order: D, E, B, F, G, C, A
+    post-order sequence: D, E, B, F, G, C, A
 
 ### Perfect binary tree:
     - A binary tree is considered perfect if it is both full and complete
@@ -55,16 +66,6 @@
 
     - The uncle to D & E is C
     - The uncle to F & G is B
-
-### Level-order traversal
-    - Also called breadth-first-values method
-    - Traverses through the tree level printing out the values
-    - Can also be implemented using queues
-
-                     .-------(A)-------.
-                .--(B)--.         .--(C)--.
-                (D)     (E)     (F)     (G)
-    Sequence: A, B, C, D, E, F, G
 
 ### complete binary tree
     - A binary tree is considered complete if all levels, except possibly the last, are completely filled, and all nodes are as left as possible.
