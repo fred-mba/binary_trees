@@ -71,5 +71,7 @@ void traversal_level(const binary_tree_t *tree, void (*func)(int), int level);
 int full_binary_tree(const binary_tree_t *tree, size_t level);
 int is_complete(const binary_tree_t *tree, int level, int size);
 int tree_is_bst(const binary_tree_t *node, int *prev_value);
+bst_t *create_node(int value);
+void binary_delete(binary_tree_t *tree);
 
 #endif
